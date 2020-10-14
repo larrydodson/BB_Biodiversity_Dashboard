@@ -98,7 +98,7 @@ function buildCharts(sample) {
         var barData = [trace];
         // 9. Create the layout for the bar chart. 
         var barLayout = {
-            title: "Top 10 OTU",
+            title: "Top 10 OTU Bacteria Cultures Found",
             yaxis: {
                 tickmode: "linear",
             },
