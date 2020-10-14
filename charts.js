@@ -84,45 +84,36 @@ function buildCharts(sample) {
         //**var yticks =
 
         // 8. Create the trace for the bar chart. 
+
+
         var trace = {
             x: sampleValues,
             y: OTU_id,
             text: labels,
             marker: {
-                color: 'blue'
+                color: 'deepblue'
             },
             type: "bar",
             orientation: "h",
         };
 
-        var barData = [trace];
+        var data = [trace];
+
         // 9. Create the layout for the bar chart. 
-        var barLayout = {
-            title: "Top 10 OTU Bacteria Cultures Found",
+        var layout = {
+            title: "Top 10 OTU Bacteria Cultures<br>(Operational Taxonomic Units)",
             yaxis: {
                 tickmode: "linear",
             },
             margin: {
                 l: 100,
-                r: 100,
+                r: 50,
                 t: 100,
                 b: 30
             }
         };
         // 10. Use Plotly to plot the data with the layout. 
-        Plotly.newPlot("bar", barData, barLayout);
-
-        var trace = {
-            x: sampledata.samples[0].otu_ids,
-            y: sampledata.samples[0].sample_values,
-            mode: "markers",
-            marker: {
-                size: sampledata.samples[0].sample_values,
-                color: sampledata.samples[0].otu_ids
-            },
-            text: sampledata.samples[0].otu_labels
-
-        };
+        Plotly.newPlot("bar", data, layout);
 
     });
 }
