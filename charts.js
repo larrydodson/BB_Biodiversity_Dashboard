@@ -101,6 +101,8 @@ function buildCharts(sample) {
             yaxis: {
                 tickmode: "linear",
             },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
             margin: {
                 l: 100,
                 r: 50,
@@ -166,7 +168,7 @@ function buildCharts(sample) {
                 bordercolor: "black",
                 steps: [
                     { range: [0, 2], color: "salmon" },
-                    { range: [2, 4], color: "turquoise" },
+                    { range: [2, 4], color: "powderblue" },
                     { range: [4, 6], color: "lightsteelblue" },
                     { range: [6, 8], color: "steelblue" },
                     { range: [8, 10], color: "cadetblue" }
@@ -180,8 +182,9 @@ function buildCharts(sample) {
         var gaugeLayout = {
             width: 500,
             height: 400,
-            margin: { t: 20, b: 40, l: 100, r: 100 },
-            font: { color: "darkblue", family: "Arial" }
+            margin: { t: 20, b: 40, l: 60, r: 100 },
+            paper_bgcolor: "rgba(0,0,0,0)",
+            font: { color: "black", family: "Arial" }
         };
 
         // 6. Use Plotly to plot the gauge data and layout.
