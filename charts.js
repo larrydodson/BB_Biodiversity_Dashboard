@@ -1,4 +1,6 @@
 //BBBio, Belly Button Biodiversity
+
+// Create function for the initial page data rendering.
 function init() {
     // Grab a reference to the dropdown select element
     var selector = d3.select("#selDataset");
@@ -30,7 +32,6 @@ function optionChanged(newSample) {
     // Fetch new data each time a new sample is selected
     buildMetadata(newSample);
     buildCharts(newSample);
-
 }
 
 // Demographics Panel 
@@ -81,18 +82,18 @@ function buildCharts(sample) {
 
         //**var yticks =
 
+        // Build a Bar Chart.
         // 8. Create the trace for the bar chart. 
         var trace = {
             x: sampleValues,
             y: OTU_id,
             text: labels,
             marker: {
-                color: 'deepblue'
+                color: 'steelblue'
             },
             type: "bar",
             orientation: "h",
         };
-
         var barData = [trace];
 
         // 9. Create the layout for the bar chart. 
@@ -114,26 +115,22 @@ function buildCharts(sample) {
         Plotly.newPlot("bar", barData, barLayout);
 
 
-
-        // Building a Belly Button Bubble Chart
+        // Build a Bubble Chart
         // 1. Create the trace for the bubble chart.
         var trace1 = {
             x: ids,
             y: sampleValues,
-            //x: samples.otu_ids,
-            //y: samples.sample_values,
+            type: "scatter",
             mode: "markers",
             marker: {
-                size: sampleValues,
+                size: sampleValues.map(d => d),
                 color: ids,
-                colorscale: 1,
-                //size: size,
-                sizeref: 0.2,
+                colorscale: "Earth",
+                sizeref: 0.1,
                 sizemode: 'area',
             },
             text: labels
         };
-
         var bubbleData = [trace1]
 
         // 2. Create the layout for the bubble chart.
@@ -149,7 +146,7 @@ function buildCharts(sample) {
         Plotly.newPlot("bubble", bubbleData, bubbleLayout);
 
 
-        // Building a Washing Frequency Gauge Chart
+        // Build a Washing Frequency Gauge Chart
         // 4. Create the trace for the gauge chart.
         var wfreq = data.metadata.map(d => d.wfreq)
         console.log(`Washing Freq: ${wfreq}`)
@@ -167,7 +164,7 @@ function buildCharts(sample) {
                 borderwidth: 1,
                 bordercolor: "black",
                 steps: [
-                    { range: [0, 2], color: "salmon" },
+                    { range: [0, 2], color: "lightcyan" },
                     { range: [2, 4], color: "powderblue" },
                     { range: [4, 6], color: "lightsteelblue" },
                     { range: [6, 8], color: "steelblue" },
@@ -175,7 +172,6 @@ function buildCharts(sample) {
                 ]
             }
         };
-
         var gaugeData = [trace2];
 
         // 5. Create the layout for the gauge chart.
@@ -189,6 +185,8 @@ function buildCharts(sample) {
 
         // 6. Use Plotly to plot the gauge data and layout.
         Plotly.newPlot("gauge", gaugeData, gaugeLayout);
+
+
 
     });
 }
