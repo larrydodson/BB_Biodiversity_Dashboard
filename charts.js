@@ -146,6 +146,8 @@ function buildCharts(sample) {
             title: "Bacteria Cultures per Sample (OTU)",
             xaxis: { title: "OTU ID" },
             showgrid: true,
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
             height: 600,
             width: 1250
         };
