@@ -7,7 +7,7 @@ function init() {
 
     // Use the list of sample names to populate the select options
     d3.json("samples.json").then((data) => {
-        console.log(data)
+        //console.log(data)
 
         var sampleNames = data.names;
 
@@ -61,28 +61,34 @@ function buildMetadata(sample) {
 function buildCharts(sample) {
     // 2. Use d3.json to load and retrieve the samples.json file 
     d3.json("samples.json").then((data) => {
-        // 3. Create a variable that holds the samples array. 
+        console.log(data);
+        // 3. Create a variable that holds the array for all samples. 
         var metadata = data.metadata;
         // 4. Create a variable that filters the samples for the object with the desired sample number.
         var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
         // 5. Create a variable that holds the first sample in the array.
         var result = resultArray[0];
+        //console.log(result);
 
         // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-        var ids = data.samples[0].otu_ids;
+        var ids = data.samples.otu_ids;
+        var otu_ids = data.samples.otu_ids;
+        var otuIds = data.samples.map(d => d.otu_ids);
         var labels = data.samples[0].otu_labels.slice(0, 10);
         var sampleValues = data.samples[0].sample_values.slice(0, 10).reverse();
+        var sample_values = data.samples[0].sample_values;
+        console.log(sample_values);
 
+        // Build a Bar Chart.
         // 7. Create the yticks for the bar chart.
         // Hint: Get the the top 10 otu_ids and map them in descending order  
         //  so the otu_ids with the most bacteria are last. 
         var OTU_top = (data.samples[0].otu_ids.slice(0, 10)).reverse();
+        var OTU_topp = (data.samples[0].otu_ids);
         var OTU_id = OTU_top.map(d => "OTU " + d);
         var labels = data.samples[0].otu_labels.slice(0, 10);
 
         //**var yticks =
-
-        // Build a Bar Chart.
         // 8. Create the trace for the bar chart. 
         var trace = {
             x: sampleValues,
@@ -112,21 +118,23 @@ function buildCharts(sample) {
             }
         };
         // 10. Use Plotly to plot the data with the layout. 
-        Plotly.newPlot("bar", barData, barLayout);
-
+        //console.log("bar", barData, barLayout);
+        //Plotly.newPlot("bar", barData, barLayout);
+        //Plotly.restyle("bar", barData, barLayout);
+        Plotly.react("bar", barData, barLayout);
 
         // Build a Bubble Chart
         // 1. Create the trace for the bubble chart.
         var trace1 = {
-            x: ids,
-            y: sampleValues,
+            x: OTU_topp,
+            y: sample_values,
             type: "scatter",
             mode: "markers",
             marker: {
-                size: sampleValues.map(d => d),
-                color: ids,
-                colorscale: "Earth",
-                sizeref: 0.1,
+                size: sample_values,
+                color: OTU_topp,
+                colorscale: "Portland", //Portland,Jet,Earth,Viridis
+                sizeref: 0.015,
                 sizemode: 'area',
             },
             text: labels
@@ -137,9 +145,9 @@ function buildCharts(sample) {
         var bubbleLayout = {
             title: "Bacteria Cultures per Sample (OTU)",
             xaxis: { title: "OTU ID" },
-
+            showgrid: true,
             height: 600,
-            width: 1100
+            width: 1250
         };
 
         // 3. Use Plotly to plot the data with the layout.
@@ -149,7 +157,7 @@ function buildCharts(sample) {
         // Build a Washing Frequency Gauge Chart
         // 4. Create the trace for the gauge chart.
         var wfreq = data.metadata.map(d => d.wfreq)
-        console.log(`Washing Freq: ${wfreq}`)
+            //console.log(`Washing Freq: ${wfreq}`)
 
         var trace2 = {
             domain: { x: [0, 1], y: [0, 1] },
@@ -186,7 +194,20 @@ function buildCharts(sample) {
         // 6. Use Plotly to plot the gauge data and layout.
         Plotly.newPlot("gauge", gaugeData, gaugeLayout);
 
+        // event handler on dropdown selection 
+        //d3.select('#optionChanged(this.value)').on('change', function() {
+        //var newValue = eval(d3.select(this).property('value'));
+        //updateValue(newSample);
+        //});
+
+        //d3.select("optionChanged").on('change');
 
 
     });
+}
+
+function optionChanged(newSample) {
+    // Fetch new data each time a new sample is selected
+    buildMetadata(newSample);
+    buildCharts(newSample);
 }
