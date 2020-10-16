@@ -15,14 +15,9 @@
 
 ---  
 
-## Overview 
+## Overview and Purpose
   
-  The project is in support of 
-  , to generate a web site with an interactive user dashboard. 
-
-   ### Purpose
-   
-   To create a user interactive webpage that allows users to parse data of recorded bacteria sample data, by allowing users to filter for multiple criteria and viewing on separate data charts. To build a webpage that will allow users to view the data, and creating a dynamic charts that present the information (using JavaScript and HTML).
+  The project is in support of Roza, to generate an interactive web site with user dashboard with the purpose viewing bacteria sample test results. The samples are from volunteers who donated samples of their belly button bacteria. They can view their test results by using a private "Test Subject ID Number". The web page was created using JavaScript and HTML, and is interactive allowing the viewing of the bacteria species data and to identify the  species found in the donor's navel.
 
 
    The deliverables are:  
@@ -39,9 +34,9 @@
   
 --- 
 
-## Results
+## Results 
   
-  ###  -- The web app is deployed here (using GitHub Pages):  ## https://larrydodson.github.io/BB_Biodiversity_Dashboard/
+  ###  -- The web app is deployed using GitHub Pages:  https://larrydodson.github.io/BB_Biodiversity_Dashboard/
   
    **Sample image of the webpage:**
 
@@ -58,14 +53,6 @@
    | Deliverable 2: Create a Bubble Chart | Complete |
    | Deliverable 3: Create a Gauge Chart  | Complete |
    | Deliverable 4: Customize the Dashboard  | Complete, Customization Items are: <br> 1) image added to the jumbotron <br> 2) background color added <br> 3) added short information paragraph <br> 4) page and tables made mobile-responsive  |
-
---- 
-
-## Summary
-  
-  ### Dra
-  
-
 
 .
 
