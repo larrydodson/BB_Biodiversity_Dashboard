@@ -2,7 +2,7 @@
 
 ### Welcome to Belly Button Biodiversity Dashboard Bacteria Project
 
-  ### *Shortcut*: the Deliverable web app is deployed here:  https://larrydodson.github.io/UFO_Finder/
+  ### *Shortcut*: the Deliverable web app is deployed here:  https://larrydodson.github.io/BB_Biodiversity_Dashboard/
 
 ---
 
@@ -41,24 +41,23 @@
 
 ## Results
   
-  ###  -- The web app is deployed here (using GitHub Pages):  https://larrydodson.github.io/UFO_Finder/ 
+  ###  -- The web app is deployed here (using GitHub Pages):  ## https://larrydodson.github.io/BB_Biodiversity_Dashboard/
   
    **Sample image of the webpage:**
 
-## https://larrydodson.github.io/BB_Biodiversity_Dashboard/
-
-![BBio_webpage.png](https://github.com/larrydodson/BB_Biodiversity_Dashboard/blob/main/BBio_webpage.png)
+   ![BBio_webpage.png](https://github.com/larrydodson/BB_Biodiversity_Dashboard/blob/main/BBio_webpage.png)
 
 
 <br>
 
 ### Deliverables Results
 
- 
-   - Deliverable 1: Create a Horizontal Bar Chart
-   - Deliverable 2: Create a Bubble Chart
-   - Deliverable 3: Create a Gauge Chart
-   - Deliverable 4: Customize the Dashboard
+   | Deliverable Item | Results | 
+   | :--- | :---  |
+   | Deliverable 1: Create a Horizontal Bar Chart | Complete |
+   | Deliverable 2: Create a Bubble Chart | Complete |
+   | Deliverable 3: Create a Gauge Chart  | Complete |
+   | Deliverable 4: Customize the Dashboard  | Complete, Customization Items are: <br> 1) image added to the jumbotron <br> 2) background color added <br> 3) added short information paragraph <br> 4) page and tables made mobile-responsive  |
 
 --- 
 
