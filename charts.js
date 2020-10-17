@@ -7,7 +7,7 @@ function init() {
 
     // Use the list of sample names to populate the select options
     d3.json("samples.json").then((data) => {
-        console.log(data)
+        //console.log(data)
 
         var sampleNames = data.names;
 
@@ -69,31 +69,33 @@ function buildCharts(sample) {
         var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
         // 5. Create a variable that holds the first sample in the array.
         var result = resultArray[0];
-        console.log(result);
+        var id = result.id;
+        console.log(id);
+        //console.log(resultArray);
 
         // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-        var ids = data.samples.otu_ids;
-        var otu_ids = data.samples.otu_ids;
-        var otuIds = data.samples.map(d => d.otu_ids);
         var labels = data.samples[0].otu_labels.slice(0, 10);
-        var sampleValues = data.samples[0].sample_values.slice(0, 10).reverse();
-        var sample_values = data.samples[0].sample_values;
-        console.log(sample_values);
+        var samples = data.samples;
+        var samplesArray = samples.filter(sampleObj => sampleObj.id == sample);
+        var sample_values = samplesArray[0].sample_values.slice(0, 10).reverse();
+        var sample_values_all = samplesArray[0].sample_values.slice(0, 60);
+        var otu_ids = samplesArray[0].otu_ids.slice(0, 10).reverse();
+        var otu_ids_all = samplesArray[0].otu_ids.slice(0, 60);
+        console.log(otu_ids_all);
 
         // Build a Bar Chart.
         // 7. Create the yticks for the bar chart.
         // Hint: Get the the top 10 otu_ids and map them in descending order 
         //   so the otu_ids with the most bacteria are last. 
-        var OTU_top = (data.samples[0].otu_ids.slice(0, 10)).reverse();
-        var OTU_topp = (data.samples[0].otu_ids);
-        var OTU_id = OTU_top.map(d => "OTU " + d);
         var labels = data.samples[0].otu_labels.slice(0, 10);
 
         //**var yticks =
         // 8. Create the trace for the bar chart. 
+        var y_bar = otu_ids.map(d => "OTU " + d);
+
         var trace = {
-            x: sampleValues,
-            y: OTU_id,
+            x: sample_values,
+            y: y_bar,
             text: labels,
             marker: {
                 color: 'steelblue'
@@ -119,21 +121,18 @@ function buildCharts(sample) {
             }
         };
         // 10. Use Plotly to plot the data with the layout. 
-        //console.log("bar", barData, barLayout);
-        //Plotly.newPlot("bar", barData, barLayout);
-        //Plotly.restyle("bar", barData, barLayout);
-        Plotly.react("bar", barData, barLayout);
+        Plotly.newPlot("bar", barData, barLayout);
 
         // Build a Bubble Chart
         // 1. Create the trace for the bubble chart.
         var trace1 = {
-            x: OTU_topp,
-            y: sample_values,
+            x: otu_ids_all,
+            y: sample_values_all,
             type: "scatter",
             mode: "markers",
             marker: {
-                size: sample_values,
-                color: OTU_topp,
+                size: sample_values_all,
+                color: otu_ids_all,
                 colorscale: "Portland", //Portland,Jet,Earth,Viridis
                 sizeref: 0.015,
                 sizemode: 'area',
@@ -159,7 +158,6 @@ function buildCharts(sample) {
 
         // Build a Washing Frequency Gauge Chart
         // 4. Create the trace for the gauge chart.
-        //var wfreq = metadata.map(d => d.wfreq);
         var wfreq = result.wfreq;
         //console.log(`Washing Freq: ${wfreq}`)
 
@@ -198,13 +196,5 @@ function buildCharts(sample) {
         // 6. Use Plotly to plot the gauge data and layout.
         Plotly.newPlot("gauge", gaugeData, gaugeLayout);
 
-
-        // event on new value selection 
-        //d3.selectAll("#selDataset").on("change", buildCharts(value));
-
-
-
     });
 }
-
-d3.selectAll("#selDataset").on("change", buildCharts());
