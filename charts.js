@@ -186,9 +186,9 @@ function buildCharts(sample) {
 
         // 5. Create the layout for the gauge chart.
         var gaugeLayout = {
-            width: 500,
+            width: 400,
             height: 400,
-            margin: { t: 20, b: 40, l: 60, r: 100 },
+            margin: { t: 20, b: 40, l: 60, r: 60 },
             paper_bgcolor: "rgba(0,0,0,0)",
             font: { color: "black", family: "Arial" }
         };
@@ -196,20 +196,15 @@ function buildCharts(sample) {
         // 6. Use Plotly to plot the gauge data and layout.
         Plotly.newPlot("gauge", gaugeData, gaugeLayout);
 
-        // event handler on dropdown selection 
-        //d3.select('#optionChanged(this.value)').on('change', function() {
-        //var newValue = eval(d3.select(this).property('value'));
-        //updateValue(newSample);
-        //});
 
-        //d3.select("optionChanged").on('change');
+        // event handler on new value selection 
+        d3.select('#optionChanged(this.value)').on('change', function() {
+            d3.select(newSample)
+                //var newSample = eval(d3.select(this).property(''));
+                //updateValue(newSample);
+        });
+
 
 
     });
-}
-
-function optionChanged(newSample) {
-    // Fetch new data each time a new sample is selected
-    buildMetadata(newSample);
-    buildCharts(newSample);
 }
