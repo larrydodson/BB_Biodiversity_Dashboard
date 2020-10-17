@@ -143,8 +143,9 @@ function buildCharts(sample) {
 
         // 2. Create the layout for the bubble chart.
         var bubbleLayout = {
-            title: "Bacteria Cultures per Sample (OTU)",
+            title: "Bacteria Cultures per Sample (OTU ID)",
             xaxis: { title: "OTU ID" },
+            yaxis: { title: "Bacteria Species Relative Abundance Value" },
             showgrid: true,
             paper_bgcolor: 'rgba(0,0,0,0)',
             plot_bgcolor: 'rgba(0,0,0,0)',
