@@ -11,7 +11,6 @@
     - Purpose
     - Resources
   * Results
-  * Summary
 
 ---  
 
@@ -54,6 +53,5 @@
    | Deliverable 3: Create a Gauge Chart  | Complete |
    | Deliverable 4: Customize the Dashboard  | Complete, Customization Items are: <br> 1) image added to the jumbotron <br> 2) background color added <br> 3) added short information paragraph <br> 4) page and tables made mobile-responsive <br> 5) added other formatting: font colors, sizes, and table size changes |
 
-.
 
-.end 
+.end. 
